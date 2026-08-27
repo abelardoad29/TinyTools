@@ -1,10 +1,12 @@
 import { ArrowRight, LockKeyhole, Search } from "lucide-react";
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AdBanner } from "../../components/ads/AdBanner";
 import { ToolIcon } from "../../components/ui/ToolIcon";
 import type { EntitlementId } from "../../core/entitlements/types";
 import { getProduct } from "../../core/catalog/productCatalog";
-import { canUseTool } from "../../stores/appStore";
+import { isTauri } from "../../core/storage/storage";
+import { canUseTool, useIsPro } from "../../stores/appStore";
 import { toolRegistry } from "../../tools/registry";
 import type { ToolManifest } from "../../tools/types";
 
@@ -45,6 +47,7 @@ export function HubPage({
   view?: "home" | "tools" | "discover";
 }) {
   const [query, setQuery] = useState("");
+  const isPro = useIsPro();
   const filtered = useMemo(
     () =>
       toolRegistry.filter((tool) =>
@@ -117,6 +120,7 @@ export function HubPage({
           </div>
         </section>
       ) : null}
+      {!isTauri() && !isPro ? <AdBanner /> : null}
     </main>
   );
 }

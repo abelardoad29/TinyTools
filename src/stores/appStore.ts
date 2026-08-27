@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { entitlementService } from "../core/entitlements/LocalDevEntitlementProvider";
+import { entitlementService } from "../core/entitlements/GumroadEntitlementProvider";
 import type { EntitlementId } from "../core/entitlements/types";
 import { storage } from "../core/storage/storage";
 
@@ -11,6 +11,7 @@ type AppState = {
   initialize: () => Promise<void>;
   setTheme: (theme: ThemePreference) => Promise<void>;
   refreshEntitlements: () => Promise<void>;
+  syncOwned: () => Promise<void>;
 };
 
 const applyTheme = (theme: ThemePreference): void => {
@@ -32,6 +33,10 @@ export const useAppStore = create<AppState>((set) => ({
       const theme = savedTheme ?? "system";
       applyTheme(theme);
       set({ theme, owned: new Set(owned), ready: true });
+      // Revalidate in the background (catches a refund/chargeback) without blocking startup.
+      void entitlementService.refresh().then(async () => {
+        set({ owned: new Set(await entitlementService.listOwned()) });
+      });
     } catch {
       applyTheme("system");
       set({ theme: "system", owned: new Set(), ready: true });
@@ -46,6 +51,11 @@ export const useAppStore = create<AppState>((set) => ({
     await entitlementService.refresh();
     set({ owned: new Set(await entitlementService.listOwned()) });
   },
+  // Re-reads cached entitlement state without a network call — use after redeem()/
+  // deactivate() already updated the cache, to avoid a redundant verification request.
+  syncOwned: async () => {
+    set({ owned: new Set(await entitlementService.listOwned()) });
+  },
 }));
 
 export const canUseTool = (
@@ -53,3 +63,5 @@ export const canUseTool = (
   entitlement: EntitlementId,
   owned: Set<EntitlementId>,
 ): boolean => free || owned.has(entitlement);
+
+export const useIsPro = (): boolean => useAppStore((s) => s.owned.has("app.pro"));

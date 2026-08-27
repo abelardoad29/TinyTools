@@ -20,7 +20,11 @@ export type ToolManifest = {
     | "mouse"
     | "layers"
     | "calendar"
-    | "layout-grid";
+    | "layout-grid"
+    | "code"
+    | "type"
+    | "calculator"
+    | "qr-code";
   route: `/tools/${string}`;
   free: boolean;
   featured?: boolean;

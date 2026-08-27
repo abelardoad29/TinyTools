@@ -56,6 +56,35 @@ No es objetivo inicial:
 
 ---
 
+## 1.1 Enmienda 2026-08-27 — Distribución web-first y monetización simplificada
+
+Decisión de negocio confirmada explícitamente por el usuario. Esta enmienda tiene prioridad sobre cualquier texto de las secciones 2, 3, 9, 10 y 23 que la contradiga, hasta que esas secciones se reescriban por completo.
+
+### Distribución
+
+- El canal principal de lanzamiento es **web**, no desktop. El build de Vite ya funciona en navegador (adapter de localStorage) sin cambios adicionales de stack.
+- Priorizar tools 100% client-side (sin filesystem real, sin red de bajo nivel, sin acceso a SO). Ver el mapa de toolkits consolidados en `HERRAMIENTAS_PENDIENTES.md`.
+- Tauri/desktop deja de ser el objetivo del lanzamiento inicial. Se retoma como add-on **"Pro Desktop"** para el subconjunto de tools que sí requieren acceso nativo (filesystem batch, red, sistema, overlays de pantalla). No se descarta desktop, solo deja de bloquear el lanzamiento.
+
+### Monetización
+
+- Se reemplaza el modelo de compra por-tool/por-bundle como mecanismo principal de acceso. **Todas las tools están abiertas y usables en su versión gratuita**, cada una con sus propios límites sensatos (menos slots, sin export, límites de lote, marca de agua, etc.).
+- Existe un único producto: **TinyTools Pro** (pago único, PWYW con precio sugerido, vendido en Gumroad). Comprarlo desbloquea las funciones Pro en _todas_ las tools a la vez.
+- Se modela como un entitlement único (p. ej. `app.pro`) consultado con la misma interfaz `EntitlementService.has()` de la sección 7 — no cambia el contrato, solo el uso: en vez de `has("tool.rename")` para decidir si la tool _abre_, las tools usan `has("app.pro")` para decidir si renderizan sus funciones avanzadas. Ninguna tool queda bloqueada por completo.
+- Los bundles temáticos (sección 2.3) quedan en pausa como mecanismo de venta principal; podrían reintroducirse solo para el add-on Desktop Pro más adelante.
+- Los precios "por tool" listados en el catálogo (sección 25 / `HERRAMIENTAS_PENDIENTES.md`) quedan como referencia histórica de valor relativo entre tools, no como precios de venta reales.
+
+### Verificación de licencia (corrección 2026-08-27, implementada en Fase B)
+
+La API de verificación de licencias de Gumroad (`POST https://api.gumroad.com/v2/licenses/verify`) **no soporta CORS**: no puede llamarse directo desde JavaScript de navegador. La arquitectura implementada usa una función serverless propia, sin estado y sin base de datos (no un "backend" en el sentido de la sección 1, solo un proxy):
+
+- `api/verify-license.ts` — Vercel Edge Function (host elegido: Vercel, el usuario ya tenía cuenta ahí — ver nota de Fase C sobre los términos del plan Hobby). Recibe `{ licenseKey }` del cliente, reenvía la verificación a Gumroad server-to-server (donde CORS no aplica), y responde `{ valid: boolean, error?: string }` con headers CORS propios.
+- `src/core/entitlements/GumroadEntitlementProvider.ts` — implementa `EntitlementService`. Cachea el resultado localmente (`storage`) para uso offline; `refresh()` revalida en segundo plano sin bloquear el arranque y, si falla por conectividad, conserva el último estado conocido en vez de revocar Pro. El endpoint es configurable (`VITE_VERIFY_ENDPOINT`, default `/api/verify-license`) para que el futuro build de escritorio pueda apuntar a la URL absoluta del sitio desplegado.
+- Requiere una variable de entorno server-side en Vercel: `GUMROAD_PRODUCT_ID` (el id de producto de Gumroad, no el permalink — Gumroad exige `product_id` para productos creados desde 2023-01-09). No existe valor real hasta que el producto "TinyTools Pro" se cree en Gumroad (Fase C).
+- Ads (ver Fase B más abajo): banner discreto solo en build web (`!isTauri()`) y solo para usuarios no-Pro, nunca dentro de una tool — solo al final del Hub. Inerte hasta configurar `VITE_ADSENSE_CLIENT_ID`/`VITE_ADSENSE_SLOT_ID` (ver `.env.example`), lo cual requiere cuenta de AdSense aprobada sobre un dominio real (Fase C).
+
+---
+
 ## 2. Modelo de producto y distribución
 
 ### 2.1 Una aplicación, múltiples productos
@@ -761,6 +790,8 @@ Prioridad:
 ---
 
 ## 23. Roadmap inicial
+
+> Nota: las fases siguientes se escribieron antes de la enmienda 2026-08-27 (ver sección 1.1). El orden de ejecución vigente es: Wave 1 de toolkits web (client-side, sin filesystem) → desbloqueo Pro global → Desktop Pro add-on para las tools nativas. Ver `HERRAMIENTAS_PENDIENTES.md` para el mapa de toolkits consolidados.
 
 ### Phase 0 — Foundation
 

@@ -306,6 +306,75 @@
   flex: 1;
   min-height: 0;
 }
+.pro-lock {
+  min-height: 160px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface-raised);
+  text-align: center;
+  color: var(--text-secondary);
+}
+.pro-lock p {
+  margin: 0;
+  max-width: 340px;
+  font-size: 13px;
+}
+.pro-lock strong {
+  color: var(--text-primary);
+}
+.pro-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+.pro-status .field-label {
+  width: 100%;
+  margin-top: 0;
+}
+.pro-active {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--success);
+  font-size: 13px;
+  font-weight: 610;
+}
+.ad-banner {
+  max-width: 940px;
+  margin: 40px auto 0;
+  padding: 0 54px;
+}
+.mode-switch {
+  display: flex;
+  padding: 3px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+}
+.mode-switch button {
+  height: 32px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.mode-switch button.active {
+  background: var(--surface);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+}
 .counter {
   min-height: calc(100vh - 67px);
   display: flex;

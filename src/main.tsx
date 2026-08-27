@@ -7,6 +7,11 @@ import "./design-system/tokens.css";
 import "./index.css";
 import "./app/app.css";
 import "./components/counter/counter.css";
+import "./tools/time/time.css";
+import "./tools/dev-toolkit/dev-toolkit.css";
+import "./tools/text-toolkit/text-toolkit.css";
+import "./tools/calculators-toolkit/calculators-toolkit.css";
+import "./tools/qr-toolkit/qr-toolkit.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

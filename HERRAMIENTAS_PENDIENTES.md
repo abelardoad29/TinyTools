@@ -6,6 +6,21 @@
 **Estados:** idea · planned · in_progress · beta · released · paused · retired  
 **Dificultad:** XS · S · M · L
 
+## Toolkits consolidados (Wave 1 — Web, ver CODEX.md §1.1)
+
+Mismo patrón que Count. (001): varias tools de un mismo patrón se unifican como _modos_ dentro de un solo toolkit, 100% client-side, sin necesidad de Tauri. Esto es lo que se construye primero para lanzar rápido en web.
+
+|  ID | Toolkit                   | Absorbe                                          | Estado | Prioridad |
+| --: | ------------------------- | ------------------------------------------------ | ------ | --------- |
+| 001 | **Count.**                | 002–010 (Conteo)                                 | beta   | P1        |
+| 011 | **Time.**                 | 012–020 (timer, pomodoro, stopwatch, countdown…) | beta   | P1        |
+| 051 | **Text Toolkit.**         | 052–060 (case, cleaner, clipboard, diff…)        | beta   | P1        |
+| 071 | **Dev Toolkit.**          | 072–080 (JSON, Base64, UUID, hash, regex, JWT…)  | beta   | P1        |
+| 091 | **QR & Barcode Toolkit.** | 092–098 (QR batch, WiFi QR, barcode…)            | beta   | P1        |
+| 221 | **Calculators Toolkit.**  | 222–230 (unit, storage, DPI, %, fechas…)         | beta   | P1        |
+
+Categorías siguientes candidatas a consolidación (no iniciar sin autorización explícita, ver §21 de CODEX.md): Image Toolkit (031–040), PDF Toolkit (041–050), CSV Toolkit (061–070), Randomizer (193–195, 251–260), Habits (191–192, 197), Dates (261–270), Security Toolkit (201–210) — todas client-side. Folder Insights/Rename (021–030), Network Toolkit (081–090), System Toolkit (131–140), Screen Toolkit (121–130) requieren Tauri y quedan para el add-on Desktop Pro.
+
 ## Conteo y seguimiento
 
 |  ID | Tool                 | Descripción                                                                 |        Precio | Bundle(s)              | Dif. | Prioridad | Estado  |
@@ -23,18 +38,18 @@
 
 ## Tiempo y productividad
 
-|  ID | Tool                  | Descripción                                           | Precio | Bundle(s)               | Dif. | Prioridad | Estado |
-| --: | --------------------- | ----------------------------------------------------- | -----: | ----------------------- | ---- | --------- | ------ |
-| 011 | **Time.**             | Temporizador minimalista.                             |     $2 | Starter / Productivity  | XS   | P1        | idea   |
-| 012 | **Multi Timer.**      | Varios temporizadores simultáneos con nombre.         |     $3 | Productivity            | XS   | P2        | idea   |
-| 013 | **Pomodoro.**         | Pomodoro simple con ciclos configurables.             |     $3 | Productivity            | XS   | P2        | idea   |
-| 014 | **Stopwatch.**        | Cronómetro con vueltas y exportación.                 |     $2 | Productivity            | M    | P2        | idea   |
-| 015 | **Countdown.**        | Cuenta regresiva hacia una fecha y hora.              |     $2 | Productivity            | XS   | P2        | idea   |
-| 016 | **Meeting Cost.**     | Calcula en tiempo real el costo de una reunión.       |     $3 | Business / Productivity | XS   | P2        | idea   |
-| 017 | **Focus Block.**      | Bloques de enfoque con historial local.               |     $3 | Productivity            | XS   | P2        | idea   |
-| 018 | **Break Reminder.**   | Recordatorios para levantarse y descansar.            |     $2 | Productivity            | XS   | P2        | idea   |
-| 019 | **Stretch Reminder.** | Recordatorios de estiramiento configurables.          |     $2 | Productivity            | XS   | P2        | idea   |
-| 020 | **Freelance Timer.**  | Tiempo por proyecto multiplicado por tarifa por hora. |     $5 | Business / Productivity | M    | P2        | idea   |
+|  ID | Tool                  | Descripción                                                                                                                     |       Precio | Bundle(s)               | Dif. | Prioridad | Estado  |
+| --: | --------------------- | ------------------------------------------------------------------------------------------------------------------------------- | -----------: | ----------------------- | ---- | --------- | ------- |
+| 011 | **Time.**             | Timer, cronómetro con vueltas, cuenta regresiva y Pomodoro unificados en un solo workspace, con bloques de enfoque e historial. | Gratis + Pro | Starter / Productivity  | XS   | P1        | beta    |
+| 012 | **Multi Timer.**      | Absorbida por Time.: varios timers con nombre como modo.                                                                        |           $3 | Productivity            | XS   | P2        | retired |
+| 013 | **Pomodoro.**         | Absorbida por Time.: modo Pomodoro con ciclos configurables.                                                                    |           $3 | Productivity            | XS   | P2        | retired |
+| 014 | **Stopwatch.**        | Absorbida por Time.: modo cronómetro con vueltas.                                                                               |           $2 | Productivity            | M    | P2        | retired |
+| 015 | **Countdown.**        | Absorbida por Time.: modo cuenta regresiva a fecha/hora.                                                                        |           $2 | Productivity            | XS   | P2        | retired |
+| 016 | **Meeting Cost.**     | Calcula en tiempo real el costo de una reunión.                                                                                 |           $3 | Business / Productivity | XS   | P3        | idea    |
+| 017 | **Focus Block.**      | Absorbida por Time.: bloques de enfoque con historial local.                                                                    |           $3 | Productivity            | XS   | P2        | retired |
+| 018 | **Break Reminder.**   | Recordatorios para levantarse y descansar.                                                                                      |           $2 | Productivity            | XS   | P3        | idea    |
+| 019 | **Stretch Reminder.** | Recordatorios de estiramiento configurables.                                                                                    |           $2 | Productivity            | XS   | P3        | idea    |
+| 020 | **Freelance Timer.**  | Tiempo por proyecto multiplicado por tarifa por hora.                                                                           |           $5 | Business / Productivity | M    | P3        | idea    |
 
 ## Archivos y carpetas
 
@@ -83,18 +98,18 @@
 
 ## Texto y portapapeles
 
-|  ID | Tool                   | Descripción                                                              | Precio | Bundle(s)           | Dif. | Prioridad | Estado |
-| --: | ---------------------- | ------------------------------------------------------------------------ | -----: | ------------------- | ---- | --------- | ------ |
-| 051 | **Case.**              | Convierte texto entre mayúsculas, minúsculas, title, camel y snake case. | Gratis | Starter / Text      | XS   | P2        | idea   |
-| 052 | **Text Cleaner.**      | Limpia espacios, saltos y caracteres invisibles.                         |     $2 | Text                | XS   | P2        | idea   |
-| 053 | **Character Count.**   | Cuenta caracteres, palabras, líneas y párrafos.                          | Gratis | Starter / Text      | XS   | P2        | idea   |
-| 054 | **Clipboard History.** | Historial local de texto copiado.                                        |     $4 | Text / Productivity | XS   | P2        | idea   |
-| 055 | **Clipboard Cleaner.** | Limpia el portapapeles manual o automáticamente.                         |     $2 | Privacy / Text      | XS   | P2        | idea   |
-| 056 | **Find Replace.**      | Buscar/reemplazar en texto con vista previa.                             |     $2 | Text                | XS   | P2        | idea   |
-| 057 | **Line Tools.**        | Ordena, deduplica, invierte o numera líneas.                             |     $3 | Text / Developer    | XS   | P2        | idea   |
-| 058 | **Slug Maker.**        | Convierte títulos a slugs limpios.                                       |     $2 | Text / Developer    | XS   | P2        | idea   |
-| 059 | **Lorem Maker.**       | Genera texto placeholder configurable.                                   | Gratis | Developer / Creator | XS   | P2        | idea   |
-| 060 | **Text Diff.**         | Compara dos textos y resalta diferencias.                                |     $3 | Text / Developer    | XS   | P2        | idea   |
+|  ID | Tool                   | Descripción                                                                                                                       |       Precio | Bundle(s)           | Dif. | Prioridad | Estado  |
+| --: | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------- | -----------: | ------------------- | ---- | --------- | ------- |
+| 051 | **Text Toolkit.**      | Case, contador de caracteres, cleaner, find/replace, line tools, slug maker, lorem ipsum y diff, unificados con selector de modo. | Gratis + Pro | Starter / Text      | S    | P1        | beta    |
+| 052 | **Text Cleaner.**      | Absorbida por Text Toolkit.: modo cleaner.                                                                                        |           $2 | Text                | XS   | P2        | retired |
+| 053 | **Character Count.**   | Absorbida por Text Toolkit.: modo contador (gratis).                                                                              |       Gratis | Starter / Text      | XS   | P2        | retired |
+| 054 | **Clipboard History.** | Absorbida por Text Toolkit.: modo historial de portapapeles (Pro).                                                                |           $4 | Text / Productivity | XS   | P2        | retired |
+| 055 | **Clipboard Cleaner.** | Limpia el portapapeles manual o automáticamente.                                                                                  |           $2 | Privacy / Text      | XS   | P3        | idea    |
+| 056 | **Find Replace.**      | Absorbida por Text Toolkit.: modo buscar/reemplazar.                                                                              |           $2 | Text                | XS   | P2        | retired |
+| 057 | **Line Tools.**        | Absorbida por Text Toolkit.: modo herramientas de línea.                                                                          |           $3 | Text / Developer    | XS   | P2        | retired |
+| 058 | **Slug Maker.**        | Absorbida por Text Toolkit.: modo slug.                                                                                           |           $2 | Text / Developer    | XS   | P2        | retired |
+| 059 | **Lorem Maker.**       | Absorbida por Text Toolkit.: modo lorem ipsum (gratis).                                                                           |       Gratis | Developer / Creator | XS   | P2        | retired |
+| 060 | **Text Diff.**         | Absorbida por Text Toolkit.: modo diff.                                                                                           |           $3 | Text / Developer    | XS   | P2        | retired |
 
 ## CSV y hojas de cálculo
 
@@ -113,18 +128,18 @@
 
 ## JSON, datos y desarrollador
 
-|  ID | Tool               | Descripción                                                           | Precio | Bundle(s)            | Dif. | Prioridad | Estado |
-| --: | ------------------ | --------------------------------------------------------------------- | -----: | -------------------- | ---- | --------- | ------ |
-| 071 | **JSON Pretty.**   | Formatea y minifica JSON.                                             | Gratis | Developer            | XS   | P2        | idea   |
-| 072 | **JSON Validate.** | Valida JSON y muestra ubicación del error.                            | Gratis | Developer            | XS   | P2        | idea   |
-| 073 | **JSON to CSV.**   | Convierte estructuras JSON tabulares a CSV.                           |     $3 | Developer / Data     | S    | P2        | idea   |
-| 074 | **CSV to JSON.**   | Convierte CSV a JSON.                                                 |     $3 | Developer / Data     | S    | P2        | idea   |
-| 075 | **Base64.**        | Codifica y decodifica texto/archivos en Base64.                       | Gratis | Developer            | XS   | P2        | idea   |
-| 076 | **UUID.**          | Genera UUID individuales o por lote.                                  | Gratis | Developer            | XS   | P2        | idea   |
-| 077 | **Hash.**          | Calcula hashes de texto y archivos.                                   | Gratis | Developer / Security | XS   | P2        | idea   |
-| 078 | **Regex.**         | Probador de expresiones regulares con resaltado.                      |     $3 | Developer            | XS   | P2        | idea   |
-| 079 | **JWT Peek.**      | Decodifica localmente encabezado/payload de JWT sin validar secretos. |     $2 | Developer            | XS   | P2        | idea   |
-| 080 | **Unix Time.**     | Convierte timestamps Unix y fechas legibles.                          |     $2 | Developer            | XS   | P2        | idea   |
+|  ID | Tool               | Descripción                                                                                                                                  |       Precio | Bundle(s)            | Dif. | Prioridad | Estado  |
+| --: | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | -----------: | -------------------- | ---- | --------- | ------- |
+| 071 | **Dev Toolkit.**   | JSON pretty/validate, JSON↔CSV, Base64, UUID, hash, regex tester, JWT peek y Unix time, unificados con selector de modo. Alto potencial SEO. | Gratis + Pro | Developer            | S    | P1        | beta    |
+| 072 | **JSON Validate.** | Absorbida por Dev Toolkit.: modo validate.                                                                                                   |       Gratis | Developer            | XS   | P2        | retired |
+| 073 | **JSON to CSV.**   | Absorbida por Dev Toolkit.: modo JSON→CSV (Pro).                                                                                             |           $3 | Developer / Data     | S    | P2        | retired |
+| 074 | **CSV to JSON.**   | Absorbida por Dev Toolkit.: modo CSV→JSON (Pro).                                                                                             |           $3 | Developer / Data     | S    | P2        | retired |
+| 075 | **Base64.**        | Absorbida por Dev Toolkit.: modo Base64 (gratis).                                                                                            |       Gratis | Developer            | XS   | P2        | retired |
+| 076 | **UUID.**          | Absorbida por Dev Toolkit.: modo UUID (gratis).                                                                                              |       Gratis | Developer            | XS   | P2        | retired |
+| 077 | **Hash.**          | Absorbida por Dev Toolkit.: modo hash (gratis).                                                                                              |       Gratis | Developer / Security | XS   | P2        | retired |
+| 078 | **Regex.**         | Absorbida por Dev Toolkit.: modo regex tester (Pro).                                                                                         |           $3 | Developer            | XS   | P2        | retired |
+| 079 | **JWT Peek.**      | Absorbida por Dev Toolkit.: modo JWT peek.                                                                                                   |           $2 | Developer            | XS   | P2        | retired |
+| 080 | **Unix Time.**     | Absorbida por Dev Toolkit.: modo Unix time.                                                                                                  |           $2 | Developer            | XS   | P2        | retired |
 
 ## Red y diagnóstico
 
@@ -143,18 +158,18 @@
 
 ## QR, códigos y etiquetas
 
-|  ID | Tool                     | Descripción                                         | Precio | Bundle(s)            | Dif. | Prioridad | Estado |
-| --: | ------------------------ | --------------------------------------------------- | -----: | -------------------- | ---- | --------- | ------ |
-| 091 | **QR.**                  | Generador QR offline para texto y URL.              |     $3 | QR / Creator         | XS   | P3        | idea   |
-| 092 | **QR Batch.**            | Genera QR en lote desde CSV.                        |     $5 | QR / Operations      | S    | P3        | idea   |
-| 093 | **WiFi QR.**             | Genera QR para compartir credenciales Wi‑Fi.        |     $2 | QR                   | XS   | P3        | idea   |
-| 094 | **Barcode.**             | Genera códigos de barras comunes.                   |     $4 | Barcode / Operations | S    | P3        | idea   |
-| 095 | **Barcode Batch.**       | Genera códigos en lote desde CSV.                   |     $5 | Barcode / Operations | S    | P3        | idea   |
-| 096 | **Label Sequence.**      | Genera etiquetas secuenciales listas para imprimir. |     $5 | Labels / Operations  | XS   | P3        | idea   |
-| 097 | **Label Designer Lite.** | Diseño simple de etiqueta con texto, QR y barcode.  |     $7 | Labels / Operations  | M    | P3        | idea   |
-| 098 | **QR Contact Sheet.**    | Acomoda muchos QR en hojas imprimibles.             |     $4 | QR / Labels          | S    | P3        | idea   |
-| 099 | **Asset Tag Maker.**     | Genera etiquetas de activos con ID y QR.            |     $5 | Labels / Business    | XS   | P3        | idea   |
-| 100 | **Shelf Label Maker.**   | Genera etiquetas simples para estantes/precios.     |     $5 | Labels / Business    | XS   | P3        | idea   |
+|  ID | Tool                      | Descripción                                                                                                                      |       Precio | Bundle(s)            | Dif. | Prioridad | Estado  |
+| --: | ------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -----------: | -------------------- | ---- | --------- | ------- |
+| 091 | **QR & Barcode Toolkit.** | QR, WiFi QR, barcode y lote/hoja imprimible (imprime vía diálogo del navegador, sin backend), unificados con selector de modo.   | Gratis + Pro | QR / Creator         | S    | P1        | beta    |
+| 092 | **QR Batch.**             | Absorbida por QR & Barcode Toolkit.: modo batch (una línea = un código, imprime como hoja).                                      |           $5 | QR / Operations      | S    | P3        | retired |
+| 093 | **WiFi QR.**              | Absorbida por QR & Barcode Toolkit.: modo WiFi QR.                                                                               |           $2 | QR                   | XS   | P3        | retired |
+| 094 | **Barcode.**              | Absorbida por QR & Barcode Toolkit.: modo barcode (CODE128, EAN13/8, UPC, CODE39, ITF14, MSI, pharmacode, codabar).              |           $4 | Barcode / Operations | S    | P3        | retired |
+| 095 | **Barcode Batch.**        | Generación de barcodes en lote — el modo Batch actual de QR & Barcode Toolkit solo genera QR, no barcodes; pendiente extenderlo. |           $5 | Barcode / Operations | S    | P3        | idea    |
+| 096 | **Label Sequence.**       | Genera etiquetas secuenciales listas para imprimir.                                                                              |           $5 | Labels / Operations  | XS   | P3        | idea    |
+| 097 | **Label Designer Lite.**  | Diseño simple de etiqueta con texto, QR y barcode.                                                                               |           $7 | Labels / Operations  | M    | P3        | idea    |
+| 098 | **QR Contact Sheet.**     | Absorbida por QR & Barcode Toolkit.: el modo batch imprime directo vía diálogo del navegador, sin PDF/backend.                   |           $4 | QR / Labels          | S    | P3        | retired |
+| 099 | **Asset Tag Maker.**      | Genera etiquetas de activos con ID y QR.                                                                                         |           $5 | Labels / Business    | XS   | P3        | idea    |
+| 100 | **Shelf Label Maker.**    | Genera etiquetas simples para estantes/precios.                                                                                  |           $5 | Labels / Business    | XS   | P3        | idea    |
 
 ## Audio
 
@@ -338,18 +353,18 @@
 
 ## Conversión y calculadoras
 
-|  ID | Tool                   | Descripción                                                          | Precio | Bundle(s)               | Dif. | Prioridad | Estado |
-| --: | ---------------------- | -------------------------------------------------------------------- | -----: | ----------------------- | ---- | --------- | ------ |
-| 221 | **Unit.**              | Conversión de unidades comunes.                                      |     $2 | Calculators             | XS   | P3        | idea   |
-| 222 | **Storage.**           | KB/MB/GB/TB y bits/bytes.                                            |     $2 | Calculators / Developer | XS   | P3        | idea   |
-| 223 | **DPI.**               | Calcula tamaño físico, píxeles y DPI.                                |     $2 | Creator / Calculators   | XS   | P3        | idea   |
-| 224 | **Aspect.**            | Calcula dimensiones manteniendo relación.                            |     $2 | Creator / Calculators   | XS   | P3        | idea   |
-| 225 | **Date Diff.**         | Diferencia entre fechas y horas.                                     |     $2 | Calculators             | XS   | P3        | idea   |
-| 226 | **Percentage.**        | Aumentos, descuentos y porcentajes.                                  |     $2 | Calculators             | XS   | P3        | idea   |
-| 227 | **Rule of Three.**     | Regla de tres simple/directa.                                        |     $2 | Calculators             | XS   | P3        | idea   |
-| 228 | **Time Decimal.**      | Convierte hh:mm ↔ horas decimales.                                   |     $2 | Business / Calculators  | XS   | P3        | idea   |
-| 229 | **Bytes Text.**        | Muestra tamaño aproximado de texto en distintas codificaciones.      |     $2 | Developer / Calculators | XS   | P3        | idea   |
-| 230 | **Coordinate Format.** | Convierte entre formatos de coordenadas introducidas por el usuario. |     $3 | Calculators             | XS   | P3        | idea   |
+|  ID | Tool                     | Descripción                                                                                                                                                                      |       Precio | Bundle(s)               | Dif. | Prioridad | Estado  |
+| --: | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -----------: | ----------------------- | ---- | --------- | ------- |
+| 221 | **Calculators Toolkit.** | Unidades, storage, DPI, aspect ratio, diferencia de fechas, porcentajes, regla de tres, hh:mm↔decimal, bytes de texto y formato de coordenadas, unificados con selector de modo. | Gratis + Pro | Calculators             | S    | P1        | beta    |
+| 222 | **Storage.**             | Absorbida por Calculators Toolkit.: modo storage.                                                                                                                                |           $2 | Calculators / Developer | XS   | P2        | retired |
+| 223 | **DPI.**                 | Absorbida por Calculators Toolkit.: modo DPI.                                                                                                                                    |           $2 | Creator / Calculators   | XS   | P2        | retired |
+| 224 | **Aspect.**              | Absorbida por Calculators Toolkit.: modo aspect ratio.                                                                                                                           |           $2 | Creator / Calculators   | XS   | P2        | retired |
+| 225 | **Date Diff.**           | Absorbida por Calculators Toolkit.: modo diferencia de fechas.                                                                                                                   |           $2 | Calculators             | XS   | P2        | retired |
+| 226 | **Percentage.**          | Absorbida por Calculators Toolkit.: modo porcentajes.                                                                                                                            |           $2 | Calculators             | XS   | P2        | retired |
+| 227 | **Rule of Three.**       | Absorbida por Calculators Toolkit.: modo regla de tres.                                                                                                                          |           $2 | Calculators             | XS   | P2        | retired |
+| 228 | **Time Decimal.**        | Absorbida por Calculators Toolkit.: modo hh:mm↔decimal.                                                                                                                          |           $2 | Business / Calculators  | XS   | P2        | retired |
+| 229 | **Bytes Text.**          | Absorbida por Calculators Toolkit.: modo bytes de texto.                                                                                                                         |           $2 | Developer / Calculators | XS   | P2        | retired |
+| 230 | **Coordinate Format.**   | Absorbida por Calculators Toolkit.: modo formato de coordenadas.                                                                                                                 |           $3 | Calculators             | XS   | P2        | retired |
 
 ## Automatización por lotes
 
@@ -440,15 +455,38 @@
 | **Events Pack**       |             $10–14 | Raffle., Bingo Caller., Scoreboard., Multi Score., Round Timer., Name Draw., Vote Counter., Event Check-in.                                 |
 | **Complete Pack**     |     $29–39 inicial | Todas las herramientas publicadas en el momento de compra; política de futuras herramientas debe definirse antes de venderlo como lifetime. |
 
-## Cola inicial recomendada
+## Cola inicial recomendada (actualizada 2026-08-27, ver CODEX.md §1.1)
 
-1. **Count.** — primera implementación funcional.
-2. **Time.** — validar patrón de tool con estado/temporización.
-3. **Awake.** — validar adaptador nativo cross-platform.
-4. **Rename.** — validar filesystem, preview, errores parciales y procesos batch.
-5. **Split CSV.** — validar procesamiento de archivos grandes.
-6. **QR.** — utilidad visual fácil de comercializar.
-7. **Compress.** — validar procesamiento batch y progress UI.
-8. **Ping.** — validar tareas periódicas y logs.
+Reordenada para lanzamiento web-first. Cada toolkit ya trae su versión gratis usable de entrada; el gate Pro (`app.pro`) se agrega en la Fase B, no antes.
+
+**Fase A — Toolkits Wave 1 (client-side, sin Tauri): COMPLETA (2026-08-27)**
+
+1. ✅ **Time.** (011) — timer/pomodoro/stopwatch/countdown/focus block, beta.
+2. ✅ **Dev Toolkit.** (071) — JSON/CSV/Base64/UUID/hash/regex/JWT/Unix time, beta.
+3. ✅ **Text Toolkit.** (051) — case/count/clean/clipboard/find-replace/lines/slug/lorem/diff, beta.
+4. ✅ **Calculators Toolkit.** (221) — unit/storage/DPI/aspect/date-diff/%/rule-of-3/time-decimal/bytes/coords, beta.
+5. ✅ **QR & Barcode Toolkit.** (091) — QR/WiFi QR/barcode/batch imprimible, beta. Usa `qrcode` + `jsbarcode` (client-side, sin backend).
+
+6 tools en `beta`, 66 herramientas del catálogo original absorbidas o cubiertas. Pendiente antes de Fase B: revisión visual en navegador de cada toolkit (esta sesión no tuvo acceso a automatización de navegador; se verificó con typecheck/lint/tests/build y transformación de módulos en el dev server, pero no una pasada visual real).
+
+**Fase B — Monetización: COMPLETA en código (2026-08-27), pendiente de credenciales reales**
+
+- ✅ Entitlement único `app.pro` (`src/core/entitlements/GumroadEntitlementProvider.ts`), con caché local offline-friendly.
+- ✅ Función serverless `api/verify-license.ts` (Vercel Edge Function — el usuario ya tenía cuenta en Vercel) — la API de licencias de Gumroad no soporta CORS, así que no se puede llamar directo desde el navegador; ver corrección en CODEX.md §1.1.
+- ✅ Límites gratis/Pro definidos y gateados por toolkit:
+  - `Time.`: historial de sesiones → Pro. Timer/Stopwatch/Pomodoro/Countdown → gratis.
+  - `Dev Toolkit.`: JSON↔CSV y Regex tester → Pro. Resto → gratis.
+  - `Text Toolkit.`: repisa de Clipboard → Pro. Resto → gratis.
+  - `QR & Barcode Toolkit.`: modo Batch/hoja imprimible → Pro. QR/WiFi QR/Barcode individuales → gratis.
+  - `Count.` y `Calculators Toolkit.`: 100% gratis, sin gate (se mantienen como imán de confianza/SEO).
+- ✅ UI de activación en Settings (pegar license key, estado Pro, desactivar).
+- ✅ Ad banner (`src/components/ads/AdBanner.tsx`) — solo web, solo no-Pro, solo al final del Hub, inerte hasta configurar AdSense.
+- ✅ 13 tests nuevos (84 en total).
+- ⏳ **Pendiente, requiere acción humana en Fase C:** crear el producto "TinyTools Pro" en Gumroad (obtener su `product_id`), hacer `vercel login` + `vercel link` + desplegar, y configurar `GUMROAD_PRODUCT_ID` en las variables de entorno del proyecto en Vercel, y opcionalmente una cuenta de AdSense aprobada + `VITE_ADSENSE_CLIENT_ID`/`VITE_ADSENSE_SLOT_ID`. Sin esto el flujo de Pro no puede probarse de punta a punta — el código no pudo verificarse contra la API real de Gumroad en esta sesión.
+- ⏳ Pendiente: revisión visual en navegador de todo (Fase A y B) — esta sesión no tuvo automatización de navegador disponible.
+
+**Fase C — Deploy web + landing + Gumroad + ads pequeños.**
+
+**Fase D (después, no bloquea el lanzamiento) — Desktop Pro add-on:** Awake., Rename./Folder Insights, Network Toolkit, System Toolkit — requieren Tauri.
 
 No avanzar automáticamente por esta lista. Cada tool requiere una orden explícita o una tarea planificada.

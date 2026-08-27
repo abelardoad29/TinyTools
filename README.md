@@ -1,10 +1,16 @@
 # TinyTools
 
-TinyTools is a cross-platform desktop hub for small, focused utilities. The current foundation includes the Hub, a searchable tool registry, local development entitlements, a separate product catalog, theming, settings, and **Count.**, a unified counting workspace.
+TinyTools is a hub of small, focused utilities that runs as a web app first and a
+cross-platform desktop app (Tauri) second. Every tool works fully offline in the
+browser using a local-storage adapter, or in the desktop app via the Tauri Store.
 
-Count supports multiple named counters, list and board views, optional goals, daily
-resets, sessions, and local history without splitting those variations into separate
-products. It works offline and persists its state locally.
+Free toolkits today: **Count.**, **Time.** (timer/stopwatch/Pomodoro/countdown),
+**Dev Toolkit.** (JSON/CSV/Base64/UUID/hash/regex/JWT/Unix time), **Text Toolkit.**
+(case/count/clean/clipboard/find-replace/lines/slug/lorem/diff), **Calculators
+Toolkit.** (units/storage/DPI/aspect/dates/percentages/rule-of-three/time-decimal/
+bytes/coordinates), and **QR & Barcode Toolkit.** Every tool is fully usable for
+free; a single **TinyTools Pro** entitlement (`app.pro`) unlocks a handful of
+advanced features across them — see `CODEX.md` §1.1 for the model.
 
 ## Requirements
 
@@ -72,4 +78,24 @@ Tool metadata lives in each tool's manifest and is composed once by `src/tools/r
 
 ## Development entitlements
 
-Edit `defaultOwned` in `src/core/entitlements/LocalDevEntitlementProvider.ts` to exercise owned and locked states. Free tools remain usable without an entitlement.
+The app ships with `GumroadEntitlementProvider` (`src/core/entitlements/GumroadEntitlementProvider.ts`), which checks Pro status against `/api/verify-license` — a real license key and a deployed Functions endpoint. Free tools remain fully usable without any entitlement.
+
+To force a Pro or free state locally instead of going through a real license, swap the `entitlementService` import in `src/stores/appStore.ts` for `new LocalDevEntitlementProvider(new Set(["app.pro"]))` (or an empty set) from `src/core/entitlements/LocalDevEntitlementProvider.ts` — don't commit that swap.
+
+## Deploy (web)
+
+The web build is a static site plus one Edge Function (`api/verify-license.ts`), targeting [Vercel](https://vercel.com):
+
+```bash
+corepack pnpm exec vercel login   # one-time, opens a browser to authenticate
+corepack pnpm exec vercel link    # one-time, links this folder to a Vercel project
+pnpm vercel:deploy                # builds and deploys to production
+```
+
+Vercel auto-detects the Vite framework preset (build command, `dist/` output) and picks up `api/verify-license.ts` as an Edge Function with no extra config. First deploy gives you a free `https://<project>.vercel.app` URL — no custom domain required to go live. To try the function locally before deploying, `pnpm vercel:dev` runs the app behind the Vercel dev server.
+
+Set `GUMROAD_PRODUCT_ID` as an environment variable in the Vercel project settings (Settings → Environment Variables) once the "TinyTools Pro" product exists on Gumroad (see `HERRAMIENTAS_PENDIENTES.md`, Fase C) — the verify endpoint won't work without it. Optional: `VITE_ADSENSE_CLIENT_ID` / `VITE_ADSENSE_SLOT_ID` (see `.env.example`) enable the ad banner once there's an approved AdSense account for the live domain.
+
+Note: Vercel's free Hobby plan is intended for non-commercial projects per its terms — worth knowing since this project sells things, though plenty of small side projects run there anyway; upgrade to Pro (or move to a host like Cloudflare Pages, whose free tier explicitly allows commercial use) if that ever becomes a concern.
+
+The Tauri desktop build (`pnpm tauri:build`) doesn't need any of this and never shows ads. Its Pro activation flow calls the deployed web app's endpoint over the internet instead of a relative path — set `VITE_VERIFY_ENDPOINT` (see `.env.example`) to the live URL before building for desktop, once one exists. Desktop distribution itself is deferred to Fase D (`HERRAMIENTAS_PENDIENTES.md`).

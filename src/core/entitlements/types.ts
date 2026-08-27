@@ -1,4 +1,4 @@
-export type EntitlementId = `tool.${string}`;
+export type EntitlementId = `tool.${string}` | "app.pro";
 
 export interface EntitlementService {
   has(entitlement: EntitlementId): Promise<boolean>;

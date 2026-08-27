@@ -1,0 +1,155 @@
+.dev-workspace {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 52px 48px 80px;
+}
+.dev-panel {
+  margin-top: 28px;
+}
+.dev-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0;
+}
+.dev-toolbar .secondary-action {
+  height: 36px;
+  padding: 0 12px;
+  font-size: 12px;
+}
+.dev-copy {
+  height: 30px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-size: 11px;
+  cursor: pointer;
+}
+.dev-copy:hover {
+  background: var(--surface-hover);
+  color: var(--text-primary);
+}
+.dev-textarea {
+  width: 100%;
+  min-height: 160px;
+  margin: 0;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+  color: var(--text-primary);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+  resize: vertical;
+  outline: 0;
+}
+.dev-textarea:focus {
+  border-color: var(--accent);
+}
+.dev-textarea.output {
+  background: var(--surface);
+  overflow: auto;
+}
+.dev-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.dev-grid .field-label {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.dev-grid p:not(.eyebrow) {
+  margin: 10px 0 0;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.dev-field-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.dev-field-row .field-label {
+  margin-top: 0;
+  flex: 1;
+}
+.dev-error {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  border: 1px solid var(--danger);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  color: var(--danger);
+  font-size: 12px;
+}
+.dev-hash-list,
+.dev-uuid-list,
+.dev-match-list {
+  margin-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.dev-hash-list > div {
+  padding: 12px 0;
+  display: grid;
+  grid-template-columns: 90px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.dev-hash-list dt {
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 650;
+}
+.dev-hash-list dd {
+  margin: 0;
+  overflow-x: auto;
+  white-space: nowrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+}
+.dev-uuid-list > div {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px solid var(--border);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+}
+.dev-match-list > div {
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+.dev-match-list strong {
+  color: var(--text-primary);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (max-width: 720px) {
+  .dev-workspace {
+    padding: 36px 22px 60px;
+  }
+  .dev-grid {
+    grid-template-columns: 1fr;
+  }
+  .dev-field-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

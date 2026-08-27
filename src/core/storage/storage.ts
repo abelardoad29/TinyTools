@@ -37,7 +37,7 @@ class TauriStoreAdapter implements KeyValueStorage {
   }
 }
 
-const isTauri = (): boolean => "__TAURI_INTERNALS__" in window;
+export const isTauri = (): boolean => "__TAURI_INTERNALS__" in window;
 
 export const storage: KeyValueStorage = isTauri()
   ? new TauriStoreAdapter()

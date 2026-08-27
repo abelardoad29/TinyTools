@@ -4,7 +4,12 @@ import { AppLayout } from "./layout/AppLayout";
 import { HubPage } from "./pages/HubPage";
 import { SettingsPage } from "./pages/SettingsPage";
 import { ToolPlaceholder } from "./pages/ToolPlaceholder";
+import { CalculatorsToolkitTool } from "../tools/calculators-toolkit/CalculatorsToolkitTool";
 import { CountTool } from "../tools/count/CountTool";
+import { DevToolkitTool } from "../tools/dev-toolkit/DevToolkitTool";
+import { QrToolkitTool } from "../tools/qr-toolkit/QrToolkitTool";
+import { TextToolkitTool } from "../tools/text-toolkit/TextToolkitTool";
+import { TimeTool } from "../tools/time/TimeTool";
 import { findTool } from "../tools/registry";
 import { canUseTool, useAppStore } from "../stores/appStore";
 
@@ -13,7 +18,12 @@ function ToolRoute({ owned }: { owned: ReturnType<typeof useAppStore.getState>["
   const tool = findTool(toolId);
   if (!tool) return <Navigate to="/" replace />;
   const unlocked = canUseTool(tool.free, tool.entitlement, owned);
-  if (tool.id === "count" && unlocked) return <CountTool />;
+  if (unlocked && tool.id === "count") return <CountTool />;
+  if (unlocked && tool.id === "time") return <TimeTool />;
+  if (unlocked && tool.id === "dev-toolkit") return <DevToolkitTool />;
+  if (unlocked && tool.id === "text-toolkit") return <TextToolkitTool />;
+  if (unlocked && tool.id === "calculators-toolkit") return <CalculatorsToolkitTool />;
+  if (unlocked && tool.id === "qr-toolkit") return <QrToolkitTool />;
   return <ToolPlaceholder tool={tool} locked={!unlocked} />;
 }
 export function App() {
