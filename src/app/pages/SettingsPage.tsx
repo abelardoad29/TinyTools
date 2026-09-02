@@ -1,5 +1,6 @@
 import { Check, Monitor, Moon, Sun } from "lucide-react";
 import { useState } from "react";
+import { LumbreSignature } from "../../components/brand/LumbreSignature";
 import { proProduct } from "../../core/catalog/proProduct";
 import { entitlementService } from "../../core/entitlements/GumroadEntitlementProvider";
 import { useAppStore, useIsPro, type ThemePreference } from "../../stores/appStore";
@@ -125,7 +126,7 @@ export function SettingsPage() {
       <section className="settings-group about">
         <div>
           <h2>About</h2>
-          <p>Foundation preview</p>
+          <p>Built by Lumbre Studio</p>
         </div>
         <dl>
           <div>
@@ -136,10 +137,17 @@ export function SettingsPage() {
             <dt>Storage</dt>
             <dd>Local, on this device</dd>
           </div>
+          <div>
+            <dt>Studio</dt>
+            <dd>
+              <LumbreSignature variant="compact" />
+            </dd>
+          </div>
         </dl>
       </section>
       <p className="settings-footnote">
-        More preferences will appear here as each tool earns them.
+        Nothing you type here leaves your browser. More preferences will appear as each tool
+        earns them.
       </p>
     </main>
   );

@@ -1,5 +1,6 @@
 import { Compass, Home, Search, Settings } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import { LumbreSignature } from "../../components/brand/LumbreSignature";
 import { ToolIcon } from "../../components/ui/ToolIcon";
 import { toolRegistry } from "../../tools/registry";
 import type { EntitlementId } from "../../core/entitlements/types";
@@ -44,6 +45,7 @@ export function Sidebar({ owned, onSearch }: { owned: Set<EntitlementId>; onSear
         <Settings size={17} />
         Settings
       </NavLink>
+      <LumbreSignature />
     </aside>
   );
 }

@@ -328,6 +328,31 @@
 .pro-lock strong {
   color: var(--text-primary);
 }
+.lumbre-signature {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 11px;
+  text-decoration: none;
+  transition: color 120ms ease;
+}
+.lumbre-signature:hover {
+  color: var(--text-primary);
+}
+.lumbre-mark {
+  flex: 0 0 auto;
+  width: 15px;
+  height: 15px;
+  background: currentColor;
+  -webkit-mask: url("/lumbre-mark.png") center / contain no-repeat;
+  mask: url("/lumbre-mark.png") center / contain no-repeat;
+}
+.sidebar .lumbre-signature {
+  margin: 10px 10px 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
 .pro-status {
   display: flex;
   flex-direction: column;
@@ -678,6 +703,13 @@
   .nav-primary kbd,
   .nav-section p,
   .nav-section a {
+    display: none;
+  }
+  .sidebar .lumbre-signature {
+    justify-content: center;
+    margin-inline: 0;
+  }
+  .sidebar .lumbre-signature span:last-child {
     display: none;
   }
   .hub,
