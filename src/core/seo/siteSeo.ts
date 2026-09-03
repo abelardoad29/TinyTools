@@ -1,6 +1,6 @@
 // Change this one constant when the custom domain goes live, and mirror it in the
 // static tags in index.html, public/sitemap.xml and public/robots.txt.
-export const SITE_URL = "https://tiny-tools-eta.vercel.app";
+export const SITE_URL = "https://tinytools.lumbrestudio.com";
 
 export const SITE_NAME = "TinyTools";
 export const OG_IMAGE = `${SITE_URL}/og-cover.png`;

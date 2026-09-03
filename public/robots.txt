@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://tiny-tools-eta.vercel.app/sitemap.xml
+Sitemap: https://tinytools.lumbrestudio.com/sitemap.xml
