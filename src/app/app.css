@@ -328,6 +328,27 @@
 .pro-lock strong {
   color: var(--text-primary);
 }
+.pro-lock-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 4px;
+}
+.pro-lock-actions .primary-action {
+  text-decoration: none;
+}
+.pro-lock-link {
+  border: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.pro-lock-link:hover {
+  color: var(--text-primary);
+}
 .lumbre-signature {
   display: flex;
   align-items: center;
@@ -362,6 +383,12 @@
 .pro-status .field-label {
   width: 100%;
   margin-top: 0;
+}
+.pro-price {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.6;
 }
 .pro-active {
   display: flex;

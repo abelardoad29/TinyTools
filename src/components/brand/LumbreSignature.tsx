@@ -6,12 +6,7 @@ const LUMBRE_URL = "https://lumbrestudio.com";
  */
 export function LumbreSignature({ variant = "full" }: { variant?: "full" | "compact" }) {
   return (
-    <a
-      className={`lumbre-signature ${variant}`}
-      href={LUMBRE_URL}
-      target="_blank"
-      rel="noreferrer"
-    >
+    <a className={`lumbre-signature ${variant}`} href={LUMBRE_URL} target="_blank" rel="noreferrer">
       <span className="lumbre-mark" aria-hidden="true" />
       <span>{variant === "compact" ? "Lumbre Studio" : "A Lumbre Studio product"}</span>
     </a>

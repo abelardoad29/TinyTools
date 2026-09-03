@@ -20,3 +20,12 @@ export const toolRegistry: readonly ToolManifest[] = [
 ];
 export const findTool = (id: string): ToolManifest | undefined =>
   toolRegistry.find((tool) => tool.id === id);
+
+/**
+ * What the public catalog shows. Manifests exist for tools that are still only
+ * scaffolding (Awake., Rename.); listing those would send visitors to a dead end,
+ * so they stay out of the sidebar, hub and command palette until they ship.
+ */
+export const visibleTools: readonly ToolManifest[] = toolRegistry.filter(
+  (tool) => tool.implemented,
+);

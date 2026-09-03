@@ -1,13 +1,10 @@
-import { Compass, Home, Search, Settings } from "lucide-react";
+import { Home, Search, Settings } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { LumbreSignature } from "../../components/brand/LumbreSignature";
 import { ToolIcon } from "../../components/ui/ToolIcon";
-import { toolRegistry } from "../../tools/registry";
-import type { EntitlementId } from "../../core/entitlements/types";
-import { canUseTool } from "../../stores/appStore";
+import { visibleTools } from "../../tools/registry";
 
-export function Sidebar({ owned, onSearch }: { owned: Set<EntitlementId>; onSearch: () => void }) {
-  const ownedTools = toolRegistry.filter((tool) => canUseTool(tool.free, tool.entitlement, owned));
+export function Sidebar({ onSearch }: { onSearch: () => void }) {
   return (
     <aside className="sidebar">
       <div className="brand">
@@ -19,22 +16,14 @@ export function Sidebar({ owned, onSearch }: { owned: Set<EntitlementId>; onSear
           <Home size={17} />
           Home
         </NavLink>
-        <NavLink to="/tools">
-          <span className="nav-dot" />
-          Your Tools
-        </NavLink>
-        <NavLink to="/discover">
-          <Compass size={17} />
-          Discover
-        </NavLink>
         <button onClick={onSearch}>
           <Search size={17} />
           Search <kbd>⌘K</kbd>
         </button>
       </nav>
       <div className="nav-section">
-        <p>Your tools</p>
-        {ownedTools.map((tool) => (
+        <p>Tools</p>
+        {visibleTools.map((tool) => (
           <NavLink key={tool.id} to={tool.route}>
             <ToolIcon icon={tool.icon} size={16} />
             {tool.name}

@@ -1,7 +1,7 @@
 import { Check, Monitor, Moon, Sun } from "lucide-react";
 import { useState } from "react";
 import { LumbreSignature } from "../../components/brand/LumbreSignature";
-import { proProduct } from "../../core/catalog/proProduct";
+import { formatUsd, proProduct } from "../../core/catalog/proProduct";
 import { entitlementService } from "../../core/entitlements/GumroadEntitlementProvider";
 import { useAppStore, useIsPro, type ThemePreference } from "../../stores/appStore";
 
@@ -58,18 +58,27 @@ function ProSection() {
     <section className="settings-group">
       <div>
         <h2>TinyTools Pro</h2>
-        <p>One purchase unlocks the advanced features in every tool.</p>
+        <p>
+          One payment unlocks the advanced features in every tool — session history, JSON ↔ CSV, the
+          regex tester, the clipboard shelf, and batch QR sheets.
+        </p>
       </div>
       <div className="pro-status">
         {proProduct.purchaseUrl ? (
-          <a
-            className="primary-action"
-            href={proProduct.purchaseUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Get TinyTools Pro
-          </a>
+          <>
+            <a
+              className="primary-action"
+              href={proProduct.purchaseUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Get TinyTools Pro
+            </a>
+            <p className="pro-price">
+              Pay what you want — from {formatUsd(proProduct.minPriceCents)},{" "}
+              {formatUsd(proProduct.suggestedPriceCents)} suggested. No subscription.
+            </p>
+          </>
         ) : null}
         <label className="field-label">
           Already purchased? Enter your license key
@@ -146,8 +155,8 @@ export function SettingsPage() {
         </dl>
       </section>
       <p className="settings-footnote">
-        Nothing you type here leaves your browser. More preferences will appear as each tool
-        earns them.
+        Nothing you type here leaves your browser. More preferences will appear as each tool earns
+        them.
       </p>
     </main>
   );

@@ -83,6 +83,16 @@ La API de verificación de licencias de Gumroad (`POST https://api.gumroad.com/v
 - Requiere una variable de entorno server-side en Vercel: `GUMROAD_PRODUCT_ID` (el id de producto de Gumroad, no el permalink — Gumroad exige `product_id` para productos creados desde 2023-01-09). No existe valor real hasta que el producto "TinyTools Pro" se cree en Gumroad (Fase C).
 - Ads (ver Fase B más abajo): banner discreto solo en build web (`!isTauri()`) y solo para usuarios no-Pro, nunca dentro de una tool — solo al final del Hub. Inerte hasta configurar `VITE_ADSENSE_CLIENT_ID`/`VITE_ADSENSE_SLOT_ID` (ver `.env.example`), lo cual requiere cuenta de AdSense aprobada sobre un dominio real (Fase C).
 
+### Catálogo público y SEO (Fase C, 2026-09-03)
+
+- El catálogo público sale de `visibleTools` en `src/tools/registry.ts`, que filtra por `implemented`. Las tools que aún son solo manifest (Awake., Rename.) no aparecen en sidebar, hub ni command palette, y `/tools/<id>` de una tool no implementada redirige a Home en vez de mostrar un "coming soon" sin salida.
+- El modelo de acceso por-tool desapareció del código junto con su UI: se eliminaron `ToolPlaceholder`, `canUseTool` y `core/catalog/productCatalog.ts`. La única fuente comercial es ahora `core/catalog/proProduct.ts` (el producto único), que es lo que la sección 8 pide.
+- SEO: `src/core/seo/siteSeo.ts` mantiene título y descripción por ruta, orientados a búsqueda real ("JSON Formatter…", "Free QR Code Generator…") y separados de los manifests funcionales, igual que los datos comerciales. `useRouteSeo()` los aplica al cambiar de ruta; `index.html` lleva los tags estáticos, JSON-LD y OG. `SITE_URL` en ese archivo es la constante única a cambiar cuando el dominio definitivo esté listo (hay que reflejarla también en `index.html`, `public/sitemap.xml` y `public/robots.txt`).
+
+### Marca
+
+TinyTools mantiene identidad propia (marca "T", favicon marrón `#8a5f1e`) y Lumbre Studio aparece como firma del estudio (`components/brand/LumbreSignature`), no como marca principal — así un segundo producto del estudio no se confunde con este. El mark de Lumbre es una silueta monocroma aplicada con `mask-image` para que tome el color del tema en vez de enviar un asset por tema.
+
 ---
 
 ## 2. Modelo de producto y distribución

@@ -76,6 +76,21 @@ cargo check --manifest-path src-tauri/Cargo.toml
 
 Tool metadata lives in each tool's manifest and is composed once by `src/tools/registry.ts`. Commercial data is intentionally separate in `src/core/catalog`.
 
+## SEO and branding
+
+Per-route titles and descriptions live in `src/core/seo/siteSeo.ts` and are applied by `useRouteSeo()`; `index.html` carries the static meta, Open Graph and JSON-LD tags. When the custom domain goes live, update `SITE_URL` in that file and mirror it in `index.html`, `public/sitemap.xml` and `public/robots.txt`.
+
+Social and store artwork is generated from the HTML artboards in `.scratch/` (gitignored) by rendering them headlessly at exact pixel sizes, e.g.:
+
+```bash
+"/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" \
+  --headless=new --disable-gpu --hide-scrollbars --allow-file-access-from-files \
+  --virtual-time-budget=8000 --window-size=1200,630 \
+  --screenshot=public/og-cover.png "file:///C:/code/TinyTools/.scratch/export-og.html"
+```
+
+Only tools with `implemented: true` appear in the public catalog (`visibleTools` in `src/tools/registry.ts`) — scaffolded manifests stay hidden until they ship.
+
 ## Development entitlements
 
 The app ships with `GumroadEntitlementProvider` (`src/core/entitlements/GumroadEntitlementProvider.ts`), which checks Pro status against `/api/verify-license` — a real license key and a deployed Functions endpoint. Free tools remain fully usable without any entitlement.

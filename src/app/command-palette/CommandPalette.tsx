@@ -1,19 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import type { EntitlementId } from "../../core/entitlements/types";
-import { toolRegistry } from "../../tools/registry";
-import { canUseTool } from "../../stores/appStore";
+import { visibleTools } from "../../tools/registry";
 import { ToolIcon } from "../../components/ui/ToolIcon";
 
 export function CommandPalette({
   open,
   onOpenChange,
-  owned,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
-  owned: Set<EntitlementId>;
 }) {
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -36,7 +32,7 @@ export function CommandPalette({
     }
   }, [open]);
   if (!open) return null;
-  const results = toolRegistry.filter((tool) =>
+  const results = visibleTools.filter((tool) =>
     `${tool.name} ${tool.tagline} ${tool.keywords.join(" ")}`
       .toLowerCase()
       .includes(query.toLowerCase()),
@@ -65,23 +61,18 @@ export function CommandPalette({
           />
         </label>
         <div className="palette-results">
-          {results.map((tool) => {
-            const unlocked = canUseTool(tool.free, tool.entitlement, owned);
-            return (
-              <button key={tool.id} onClick={() => select(unlocked ? tool.route : "/discover")}>
-                <span className="palette-result-icon">
-                  <ToolIcon icon={tool.icon} />
-                </span>
-                <span>
-                  <strong>{tool.name}</strong>
-                  <small>{tool.tagline}</small>
-                </span>
-                <span className="palette-state">
-                  {unlocked ? (tool.implemented ? "Open" : "Owned") : "Discover"}
-                </span>
-              </button>
-            );
-          })}
+          {results.map((tool) => (
+            <button key={tool.id} onClick={() => select(tool.route)}>
+              <span className="palette-result-icon">
+                <ToolIcon icon={tool.icon} />
+              </span>
+              <span>
+                <strong>{tool.name}</strong>
+                <small>{tool.tagline}</small>
+              </span>
+              <span className="palette-state">Open</span>
+            </button>
+          ))}
         </div>
         <footer>
           <span>↑↓ navigate</span>

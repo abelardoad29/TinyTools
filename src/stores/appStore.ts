@@ -58,10 +58,4 @@ export const useAppStore = create<AppState>((set) => ({
   },
 }));
 
-export const canUseTool = (
-  free: boolean,
-  entitlement: EntitlementId,
-  owned: Set<EntitlementId>,
-): boolean => free || owned.has(entitlement);
-
 export const useIsPro = (): boolean => useAppStore((s) => s.owned.has("app.pro"));
