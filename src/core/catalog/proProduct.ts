@@ -14,7 +14,7 @@ export const proProduct: ProProduct = {
   pricingMode: "pwyw",
   currency: "USD",
   minPriceCents: 300,
-  suggestedPriceCents: 600,
+  suggestedPriceCents: 500,
   purchaseUrl: "https://lumberjack37.gumroad.com/l/tinytools",
 };
 
