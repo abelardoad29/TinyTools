@@ -384,6 +384,32 @@
   width: 100%;
   margin-top: 0;
 }
+.confirm-block {
+  display: grid;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--danger);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+}
+.confirm-block p {
+  margin: 0;
+  max-width: 46ch;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.confirm-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.confirm-actions .danger-action {
+  margin-top: 0;
+  padding: 9px 14px;
+  border: 1px solid var(--danger);
+  border-radius: var(--radius-sm);
+}
 .pro-price {
   margin: 0;
   color: var(--text-secondary);

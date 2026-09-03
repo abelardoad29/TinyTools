@@ -17,6 +17,7 @@ function ProSection() {
   const [licenseKey, setLicenseKey] = useState("");
   const [status, setStatus] = useState<"idle" | "checking">("idle");
   const [error, setError] = useState<string | null>(null);
+  const [confirmingRemoval, setConfirmingRemoval] = useState(false);
 
   const activate = async (): Promise<void> => {
     setStatus("checking");
@@ -33,6 +34,7 @@ function ProSection() {
 
   const deactivate = async (): Promise<void> => {
     await entitlementService.deactivate();
+    setConfirmingRemoval(false);
     await syncOwned();
   };
 
@@ -47,9 +49,26 @@ function ProSection() {
           <p className="pro-active">
             <Check size={16} /> Pro is active on this device.
           </p>
-          <button className="secondary-action" onClick={() => void deactivate()}>
-            Remove license from this device
-          </button>
+          {confirmingRemoval ? (
+            <div className="confirm-block">
+              <p>
+                Remove your license from this device? Pro features lock again here, and you&apos;ll
+                need to paste the key to turn them back on. Your purchase isn&apos;t affected.
+              </p>
+              <div className="confirm-actions">
+                <button className="danger-action" onClick={() => void deactivate()}>
+                  Yes, remove it
+                </button>
+                <button className="secondary-action" onClick={() => setConfirmingRemoval(false)}>
+                  Cancel
+                </button>
+              </div>
+            </div>
+          ) : (
+            <button className="secondary-action" onClick={() => setConfirmingRemoval(true)}>
+              Remove license from this device
+            </button>
+          )}
         </div>
       </section>
     );
