@@ -1,8 +1,10 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import { App } from "./app/App";
 import { AppErrorBoundary } from "./app/AppErrorBoundary";
+import { isTauri } from "./core/storage/storage";
 import "./design-system/tokens.css";
 import "./index.css";
 import "./app/app.css";
@@ -20,6 +22,9 @@ createRoot(document.getElementById("root")!).render(
     <AppErrorBoundary>
       <BrowserRouter>
         <App />
+        {/* Page views only, cookieless, and never in the desktop build — a packaged
+            app has no reason to phone home. Tool input is never sent anywhere. */}
+        {isTauri() ? null : <Analytics />}
       </BrowserRouter>
     </AppErrorBoundary>
   </StrictMode>,

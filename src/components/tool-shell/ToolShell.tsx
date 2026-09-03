@@ -3,6 +3,7 @@ import { ArrowLeft, MoreHorizontal } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import type { ToolManifest } from "../../tools/types";
 import { ToolIcon } from "../ui/ToolIcon";
+import { ToolContent } from "./ToolContent";
 
 export function ToolShell({
   tool,
@@ -32,7 +33,10 @@ export function ToolShell({
           </button>
         )}
       </header>
-      <div className="tool-content">{children}</div>
+      <div className="tool-content">
+        {children}
+        <ToolContent toolId={tool.id} toolName={tool.name} />
+      </div>
     </main>
   );
 }

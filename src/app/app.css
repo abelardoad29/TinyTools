@@ -306,6 +306,57 @@
   flex: 1;
   min-height: 0;
 }
+/* Matches the workspaces' own width and padding so the left edge lines up with the
+   tool above it; the prose itself is kept to a readable measure instead. */
+.tool-article {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 44px 48px 88px;
+}
+.tool-article > * {
+  max-width: 68ch;
+}
+.tool-article-intro {
+  margin: 0;
+  padding-top: 44px;
+  border-top: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.75;
+}
+.tool-article h2 {
+  margin: 44px 0 4px;
+  font-size: 16px;
+  font-weight: 620;
+  letter-spacing: -0.02em;
+}
+.tool-faq {
+  margin: 0;
+}
+.tool-faq > div {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+}
+.tool-faq > div:last-child {
+  border-bottom: 0;
+}
+.tool-faq dt {
+  margin-bottom: 7px;
+  font-size: 14px;
+  font-weight: 600;
+}
+.tool-faq dd {
+  margin: 0;
+  max-width: 66ch;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.75;
+}
+@media (max-width: 720px) {
+  .tool-article {
+    padding: 8px 22px 60px;
+  }
+}
 .pro-lock {
   min-height: 160px;
   padding: 32px;

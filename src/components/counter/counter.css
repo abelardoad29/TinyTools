@@ -1,5 +1,5 @@
 .counter-workspace {
-  max-width: 900px;
+  max-width: 980px;
   margin: 0 auto;
   padding: 52px 48px 80px;
 }
@@ -519,7 +519,7 @@ button:disabled {
 .unified-count,
 .count-form,
 .count-detail {
-  max-width: 900px;
+  max-width: 980px;
   margin: 0 auto;
   padding: 52px 48px 80px;
 }

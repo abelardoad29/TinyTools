@@ -21,6 +21,7 @@
   "dependencies": {
     "@tauri-apps/api": "^2.11.1",
     "@tauri-apps/plugin-store": "^2.4.2",
+    "@vercel/analytics": "^2.0.1",
     "jsbarcode": "^3.12.3",
     "lucide-react": "^0.539.0",
     "pdf-lib": "^1.17.1",
