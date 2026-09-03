@@ -15,7 +15,7 @@ export const proProduct: ProProduct = {
   currency: "USD",
   minPriceCents: 300,
   suggestedPriceCents: 600,
-  purchaseUrl: "",
+  purchaseUrl: "https://lumberjack37.gumroad.com/l/tinytools",
 };
 
 export const formatUsd = (cents: number): string =>
