@@ -49,6 +49,16 @@ const TOOL_SEO: Record<string, RouteSeo> = {
     description:
       "Generate QR codes for text and URLs, WiFi QR codes that connect on scan, and barcodes (CODE128, EAN-13, UPC). Download PNG or SVG. Free, no watermark, no sign-up.",
   },
+  "image-toolkit": {
+    title: "Resize, Compress & Convert Images — PNG, JPG, WebP | TinyTools",
+    description:
+      "Resize, compress and convert images between PNG, JPG and WebP, crop to any ratio, add a watermark or border, and pull out dominant colors. Free, no upload, no watermark.",
+  },
+  "pdf-toolkit": {
+    title: "Merge, Split & Rotate PDF — Free, No Upload | TinyTools",
+    description:
+      "Merge PDFs, split one into parts, extract or rotate pages, turn images into a PDF, add page numbers and clean metadata. Everything runs in your browser — files stay private.",
+  },
 };
 
 const PAGE_SEO: Record<string, RouteSeo> = {

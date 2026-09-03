@@ -1,0 +1,182 @@
+.image-workspace,
+.pdf-workspace {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 52px 48px 80px;
+}
+.image-drop {
+  margin-top: 28px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface-raised);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: border-color 120ms ease;
+}
+.image-drop:hover {
+  border-color: var(--accent);
+}
+.image-drop input {
+  display: none;
+}
+.image-drop span {
+  display: grid;
+  gap: 3px;
+}
+.image-drop strong {
+  color: var(--text-primary);
+  font-size: 14px;
+}
+.image-drop small {
+  font-size: 12px;
+}
+.image-queue {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.image-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-raised);
+  font-size: 12px;
+}
+.image-chip-name {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 550;
+}
+.image-chip-meta {
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+.image-chip button {
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+.image-chip button:hover {
+  color: var(--danger);
+}
+.image-options {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 16px;
+  margin-top: 20px;
+}
+.image-options .field-label {
+  margin-top: 0;
+  min-width: 150px;
+}
+.image-options input[type="color"] {
+  height: 42px;
+  padding: 4px;
+  cursor: pointer;
+}
+.image-options input[type="range"] {
+  height: 42px;
+  accent-color: var(--accent);
+}
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 42px;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.result-card {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+}
+.result-card img {
+  width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  background: var(--surface-hover);
+}
+.result-card figcaption {
+  display: grid;
+  gap: 6px;
+  padding: 12px;
+  font-size: 12px;
+}
+.result-card strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.result-card span {
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+.result-card .secondary-action {
+  justify-content: center;
+  min-height: 34px;
+  font-size: 12px;
+}
+.swatch-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+.swatch {
+  display: grid;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-raised);
+  cursor: pointer;
+}
+.swatch span {
+  display: block;
+  width: 92px;
+  height: 56px;
+  border-radius: var(--radius-sm);
+}
+.swatch code {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+.swatch:hover code {
+  color: var(--text-primary);
+}
+@media (max-width: 720px) {
+  .image-workspace,
+  .pdf-workspace {
+    padding: 36px 22px 60px;
+  }
+  .image-options .field-label {
+    min-width: 100%;
+  }
+}

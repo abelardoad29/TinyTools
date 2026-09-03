@@ -2,6 +2,8 @@ import { awakeManifest } from "./awake/manifest";
 import { calculatorsToolkitManifest } from "./calculators-toolkit/manifest";
 import { countManifest } from "./count/manifest";
 import { devToolkitManifest } from "./dev-toolkit/manifest";
+import { imageToolkitManifest } from "./image-toolkit/manifest";
+import { pdfToolkitManifest } from "./pdf-toolkit/manifest";
 import { qrToolkitManifest } from "./qr-toolkit/manifest";
 import { renameManifest } from "./rename/manifest";
 import { textToolkitManifest } from "./text-toolkit/manifest";
@@ -15,6 +17,8 @@ export const toolRegistry: readonly ToolManifest[] = [
   textToolkitManifest,
   calculatorsToolkitManifest,
   qrToolkitManifest,
+  imageToolkitManifest,
+  pdfToolkitManifest,
   awakeManifest,
   renameManifest,
 ];

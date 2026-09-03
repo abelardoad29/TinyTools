@@ -526,9 +526,13 @@ button:disabled {
 .unified-heading {
   margin-bottom: 38px;
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
   gap: 24px;
+}
+.unified-heading > div:first-child {
+  flex: 1 1 340px;
 }
 .unified-heading h1,
 .count-form h1,

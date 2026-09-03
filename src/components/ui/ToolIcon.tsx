@@ -4,7 +4,9 @@ import {
   Code2,
   Coffee,
   FilePenLine,
+  FileText,
   Hash,
+  Image,
   Layers3,
   LayoutGrid,
   ListPlus,
@@ -37,6 +39,8 @@ const icons = {
   type: Type,
   calculator: Calculator,
   "qr-code": QrCode,
+  image: Image,
+  "file-text": FileText,
 };
 
 export function ToolIcon({ icon, size = 20 }: { icon: ToolManifest["icon"]; size?: number }) {

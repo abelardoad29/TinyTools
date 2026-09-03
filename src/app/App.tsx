@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import { Navigate, Route, Routes, useParams } from "react-router-dom";
 import { AppLayout } from "./layout/AppLayout";
 import { HubPage } from "./pages/HubPage";
@@ -6,12 +6,19 @@ import { SettingsPage } from "./pages/SettingsPage";
 import { CalculatorsToolkitTool } from "../tools/calculators-toolkit/CalculatorsToolkitTool";
 import { CountTool } from "../tools/count/CountTool";
 import { DevToolkitTool } from "../tools/dev-toolkit/DevToolkitTool";
+import { ImageToolkitTool } from "../tools/image-toolkit/ImageToolkitTool";
 import { QrToolkitTool } from "../tools/qr-toolkit/QrToolkitTool";
 import { TextToolkitTool } from "../tools/text-toolkit/TextToolkitTool";
 import { TimeTool } from "../tools/time/TimeTool";
 import { findTool } from "../tools/registry";
 import { useRouteSeo } from "../core/seo/useRouteSeo";
 import { useAppStore } from "../stores/appStore";
+
+// The PDF tool pulls in pdf-lib (~400kB). Loading the route lazily keeps that
+// weight off every other page in the app.
+const PdfToolkitTool = lazy(() =>
+  import("../tools/pdf-toolkit/PdfToolkitTool").then((m) => ({ default: m.PdfToolkitTool })),
+);
 
 function ToolRoute() {
   const { toolId = "" } = useParams();
@@ -25,6 +32,13 @@ function ToolRoute() {
   if (tool.id === "text-toolkit") return <TextToolkitTool />;
   if (tool.id === "calculators-toolkit") return <CalculatorsToolkitTool />;
   if (tool.id === "qr-toolkit") return <QrToolkitTool />;
+  if (tool.id === "image-toolkit") return <ImageToolkitTool />;
+  if (tool.id === "pdf-toolkit")
+    return (
+      <Suspense fallback={<div className="count-loading">Loading PDF tools…</div>}>
+        <PdfToolkitTool />
+      </Suspense>
+    );
   return <Navigate to="/" replace />;
 }
 export function App() {

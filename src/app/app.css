@@ -407,6 +407,10 @@
   display: flex;
   padding: 3px;
   overflow-x: auto;
+  /* Never let the tab bar be squeezed by the heading beside it — it wraps to its
+     own row instead, so tabs at the end (often the Pro ones) stay visible. */
+  flex-shrink: 0;
+  max-width: 100%;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   background: var(--surface-raised);

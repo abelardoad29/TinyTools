@@ -10,16 +10,18 @@
 
 Mismo patrón que Count. (001): varias tools de un mismo patrón se unifican como _modos_ dentro de un solo toolkit, 100% client-side, sin necesidad de Tauri. Esto es lo que se construye primero para lanzar rápido en web.
 
-|  ID | Toolkit                   | Absorbe                                          | Estado | Prioridad |
-| --: | ------------------------- | ------------------------------------------------ | ------ | --------- |
-| 001 | **Count.**                | 002–010 (Conteo)                                 | beta   | P1        |
-| 011 | **Time.**                 | 012–020 (timer, pomodoro, stopwatch, countdown…) | beta   | P1        |
-| 051 | **Text Toolkit.**         | 052–060 (case, cleaner, clipboard, diff…)        | beta   | P1        |
-| 071 | **Dev Toolkit.**          | 072–080 (JSON, Base64, UUID, hash, regex, JWT…)  | beta   | P1        |
-| 091 | **QR & Barcode Toolkit.** | 092–098 (QR batch, WiFi QR, barcode…)            | beta   | P1        |
-| 221 | **Calculators Toolkit.**  | 222–230 (unit, storage, DPI, %, fechas…)         | beta   | P1        |
+|  ID | Toolkit                   | Absorbe                                               | Estado | Prioridad |
+| --: | ------------------------- | ----------------------------------------------------- | ------ | --------- |
+| 001 | **Count.**                | 002–010 (Conteo)                                      | beta   | P1        |
+| 011 | **Time.**                 | 012–020 (timer, pomodoro, stopwatch, countdown…)      | beta   | P1        |
+| 051 | **Text Toolkit.**         | 052–060 (case, cleaner, clipboard, diff…)             | beta   | P1        |
+| 071 | **Dev Toolkit.**          | 072–080 (JSON, Base64, UUID, hash, regex, JWT…)       | beta   | P1        |
+| 091 | **QR & Barcode Toolkit.** | 092–098 (QR batch, WiFi QR, barcode…)                 | beta   | P1        |
+| 031 | **Image Toolkit.**        | 031–040 (resize, compress, convert, crop, watermark…) | beta   | P1        |
+| 041 | **PDF Toolkit.**          | 041,043–049 (merge, split, rotate, numbers…)          | beta   | P1        |
+| 221 | **Calculators Toolkit.**  | 222–230 (unit, storage, DPI, %, fechas…)              | beta   | P1        |
 
-Categorías siguientes candidatas a consolidación (no iniciar sin autorización explícita, ver §21 de CODEX.md): Image Toolkit (031–040), PDF Toolkit (041–050), CSV Toolkit (061–070), Randomizer (193–195, 251–260), Habits (191–192, 197), Dates (261–270), Security Toolkit (201–210) — todas client-side. Folder Insights/Rename (021–030), Network Toolkit (081–090), System Toolkit (131–140), Screen Toolkit (121–130) requieren Tauri y quedan para el add-on Desktop Pro.
+Categorías siguientes candidatas a consolidación (no iniciar sin autorización explícita, ver §21 de CODEX.md): CSV Toolkit (061–070), Randomizer (193–195, 251–260), Habits (191–192, 197), Dates (261–270), Security Toolkit (201–210) — todas client-side. Folder Insights/Rename (021–030), Network Toolkit (081–090), System Toolkit (131–140), Screen Toolkit (121–130) requieren Tauri y quedan para el add-on Desktop Pro.
 
 ## Conteo y seguimiento
 
@@ -68,33 +70,33 @@ Categorías siguientes candidatas a consolidación (no iniciar sin autorización
 
 ## Imágenes
 
-|  ID | Tool                     | Descripción                                         | Precio | Bundle(s)           | Dif. | Prioridad | Estado |
-| --: | ------------------------ | --------------------------------------------------- | -----: | ------------------- | ---- | --------- | ------ |
-| 031 | **Resize.**              | Redimensiona imágenes en lote.                      |     $3 | Images / Creator    | XS   | P2        | idea   |
-| 032 | **Compress.**            | Comprime JPG/PNG/WebP localmente.                   |     $3 | Images / Creator    | XS   | P2        | idea   |
-| 033 | **Convert Image.**       | Convierte entre PNG/JPG/WebP cuando sea compatible. |     $3 | Images / Creator    | S    | P2        | idea   |
-| 034 | **Crop Batch.**          | Recorte por relación o dimensiones en lote.         |     $4 | Images / Creator    | S    | P2        | idea   |
-| 035 | **Watermark.**           | Añade texto o imagen de marca de agua por lote.     |     $4 | Images / Creator    | XS   | P2        | idea   |
-| 036 | **Image Metadata.**      | Visualiza y elimina metadatos EXIF seleccionados.   |     $3 | Images / Privacy    | S    | P2        | idea   |
-| 037 | **Image Contact Sheet.** | Crea hojas de contacto con miniaturas.              |     $4 | Images / Creator    | S    | P2        | idea   |
-| 038 | **Image Border.**        | Añade borde, padding o fondo uniforme en lote.      |     $3 | Images / Creator    | S    | P2        | idea   |
-| 039 | **Image Numberer.**      | Añade numeración visible a una serie de imágenes.   |     $3 | Images / Operations | S    | P2        | idea   |
-| 040 | **Color Extract.**       | Extrae colores dominantes de una imagen.            |     $3 | Images / Creator    | XS   | P2        | idea   |
+|  ID | Tool                     | Descripción                                                         | Precio | Bundle(s)           | Dif. | Prioridad | Estado  |
+| --: | ------------------------ | ------------------------------------------------------------------- | -----: | ------------------- | ---- | --------- | ------- |
+| 031 | **Resize.**              | Absorbida por Image Toolkit.: modo resize (lote en Pro).            |     $3 | Images / Creator    | XS   | P2        | retired |
+| 032 | **Compress.**            | Absorbida por Image Toolkit.: modo compress con control de calidad. |     $3 | Images / Creator    | XS   | P2        | retired |
+| 033 | **Convert Image.**       | Absorbida por Image Toolkit.: modo convert PNG/JPG/WebP.            |     $3 | Images / Creator    | S    | P2        | retired |
+| 034 | **Crop Batch.**          | Absorbida por Image Toolkit.: modo crop por relación de aspecto.    |     $4 | Images / Creator    | S    | P2        | retired |
+| 035 | **Watermark.**           | Absorbida por Image Toolkit.: modo watermark de texto.              |     $4 | Images / Creator    | XS   | P2        | retired |
+| 036 | **Image Metadata.**      | Visualiza y elimina metadatos EXIF seleccionados.                   |     $3 | Images / Privacy    | S    | P2        | idea    |
+| 037 | **Image Contact Sheet.** | Crea hojas de contacto con miniaturas.                              |     $4 | Images / Creator    | S    | P2        | idea    |
+| 038 | **Image Border.**        | Absorbida por Image Toolkit.: modo border/padding.                  |     $3 | Images / Creator    | S    | P2        | retired |
+| 039 | **Image Numberer.**      | Añade numeración visible a una serie de imágenes.                   |     $3 | Images / Operations | S    | P2        | idea    |
+| 040 | **Color Extract.**       | Absorbida por Image Toolkit.: modo colors (paleta dominante).       |     $3 | Images / Creator    | XS   | P2        | retired |
 
 ## PDF y documentos
 
-|  ID | Tool                   | Descripción                                       | Precio | Bundle(s)     | Dif. | Prioridad | Estado |
-| --: | ---------------------- | ------------------------------------------------- | -----: | ------------- | ---- | --------- | ------ |
-| 041 | **Images to PDF.**     | Une imágenes ordenadas en un PDF.                 |     $3 | PDF           | M    | P2        | idea   |
-| 042 | **PDF to Images.**     | Convierte páginas de PDF a imágenes.              |     $3 | PDF           | M    | P2        | idea   |
-| 043 | **Merge PDF.**         | Une varios PDF.                                   |     $3 | PDF           | M    | P2        | idea   |
-| 044 | **Split PDF.**         | Divide un PDF por páginas o rangos.               |     $3 | PDF           | M    | P2        | idea   |
-| 045 | **Rotate PDF.**        | Rota páginas seleccionadas y guarda copia.        |     $2 | PDF           | M    | P2        | idea   |
-| 046 | **Reorder PDF.**       | Reordena páginas visualmente.                     |     $3 | PDF           | M    | P2        | idea   |
-| 047 | **Extract PDF Pages.** | Extrae páginas concretas a un nuevo PDF.          |     $2 | PDF           | M    | P2        | idea   |
-| 048 | **PDF Page Numbers.**  | Añade numeración simple de páginas.               |     $4 | PDF           | M    | P2        | idea   |
-| 049 | **PDF Metadata.**      | Consulta y limpia metadatos básicos de PDF.       |     $3 | PDF / Privacy | M    | P2        | idea   |
-| 050 | **PDF Contact Sheet.** | Genera una vista resumen en miniaturas de un PDF. |     $4 | PDF           | M    | P2        | idea   |
+|  ID | Tool                   | Descripción                                                   | Precio | Bundle(s)     | Dif. | Prioridad | Estado  |
+| --: | ---------------------- | ------------------------------------------------------------- | -----: | ------------- | ---- | --------- | ------- |
+| 041 | **Images to PDF.**     | Absorbida por PDF Toolkit.: modo Images → PDF.                |     $3 | PDF           | M    | P2        | retired |
+| 042 | **PDF to Images.**     | Convierte páginas de PDF a imágenes.                          |     $3 | PDF           | M    | P2        | idea    |
+| 043 | **Merge PDF.**         | Absorbida por PDF Toolkit.: modo merge.                       |     $3 | PDF           | M    | P2        | retired |
+| 044 | **Split PDF.**         | Absorbida por PDF Toolkit.: modo split por número de páginas. |     $3 | PDF           | M    | P2        | retired |
+| 045 | **Rotate PDF.**        | Absorbida por PDF Toolkit.: modo rotate (todas o por rango).  |     $2 | PDF           | M    | P2        | retired |
+| 046 | **Reorder PDF.**       | Reordena páginas visualmente.                                 |     $3 | PDF           | M    | P2        | idea    |
+| 047 | **Extract PDF Pages.** | Absorbida por PDF Toolkit.: modo extract pages.               |     $2 | PDF           | M    | P2        | retired |
+| 048 | **PDF Page Numbers.**  | Absorbida por PDF Toolkit.: modo page numbers (Pro).          |     $4 | PDF           | M    | P2        | retired |
+| 049 | **PDF Metadata.**      | Absorbida por PDF Toolkit.: modo metadata (Pro).              |     $3 | PDF / Privacy | M    | P2        | retired |
+| 050 | **PDF Contact Sheet.** | Genera una vista resumen en miniaturas de un PDF.             |     $4 | PDF           | M    | P2        | idea    |
 
 ## Texto y portapapeles
 

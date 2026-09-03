@@ -12,6 +12,8 @@ import "./tools/dev-toolkit/dev-toolkit.css";
 import "./tools/text-toolkit/text-toolkit.css";
 import "./tools/calculators-toolkit/calculators-toolkit.css";
 import "./tools/qr-toolkit/qr-toolkit.css";
+import "./tools/image-toolkit/image-toolkit.css";
+import "./tools/pdf-toolkit/pdf-toolkit.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

@@ -24,7 +24,9 @@ export type ToolManifest = {
     | "code"
     | "type"
     | "calculator"
-    | "qr-code";
+    | "qr-code"
+    | "image"
+    | "file-text";
   route: `/tools/${string}`;
   free: boolean;
   featured?: boolean;
