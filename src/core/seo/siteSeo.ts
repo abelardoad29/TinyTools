@@ -73,6 +73,11 @@ const PAGE_SEO: Record<string, RouteSeo> = {
     description:
       "More small utilities on the way. See what TinyTools is building next — free, focused, browser-based tools with no install and no account.",
   },
+  "/privacy": {
+    title: "Privacy — What TinyTools Does With Your Data | TinyTools",
+    description:
+      "Your files and text are processed in your browser and never uploaded. Page views are counted with cookieless analytics. Nothing else is collected — including the honest limitations.",
+  },
   "/settings": {
     title: "Settings | TinyTools",
     description:

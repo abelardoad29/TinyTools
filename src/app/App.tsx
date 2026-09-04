@@ -2,6 +2,7 @@ import { Suspense, lazy, useEffect } from "react";
 import { Navigate, Route, Routes, useParams } from "react-router-dom";
 import { AppLayout } from "./layout/AppLayout";
 import { HubPage } from "./pages/HubPage";
+import { PrivacyPage } from "./pages/PrivacyPage";
 import { SettingsPage } from "./pages/SettingsPage";
 import { CalculatorsToolkitTool } from "../tools/calculators-toolkit/CalculatorsToolkitTool";
 import { CountTool } from "../tools/count/CountTool";
@@ -61,6 +62,7 @@ export function App() {
         <Route path="/tools" element={<HubPage view="tools" />} />
         <Route path="/discover" element={<Navigate to="/tools" replace />} />
         <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/tools/multi-count" element={<Navigate to="/tools/count" replace />} />
         <Route path="/tools/goal-counter" element={<Navigate to="/tools/count" replace />} />
         <Route path="/tools/event-tally" element={<Navigate to="/tools/count" replace />} />

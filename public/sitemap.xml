@@ -40,4 +40,8 @@
     <loc>https://tinytools.lumbrestudio.com/tools/count</loc>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://tinytools.lumbrestudio.com/privacy</loc>
+    <priority>0.4</priority>
+  </url>
 </urlset>

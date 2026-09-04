@@ -34,7 +34,12 @@ export function Sidebar({ onSearch }: { onSearch: () => void }) {
         <Settings size={17} />
         Settings
       </NavLink>
-      <LumbreSignature />
+      <div className="sidebar-footer">
+        <LumbreSignature />
+        <NavLink className="sidebar-footer-link" to="/privacy">
+          Privacy
+        </NavLink>
+      </div>
     </aside>
   );
 }
