@@ -76,7 +76,7 @@ const PAGE_SEO: Record<string, RouteSeo> = {
   "/privacy": {
     title: "Privacy — What TinyTools Does With Your Data | TinyTools",
     description:
-      "Your files and text are processed in your browser and never uploaded. Page views are counted with cookieless analytics. Nothing else is collected — including the honest limitations.",
+      "Your files and text are processed in your browser and never uploaded. Exactly what the analytics and advertising scripts do collect is spelled out, along with the honest limitations.",
   },
   "/settings": {
     title: "Settings | TinyTools",

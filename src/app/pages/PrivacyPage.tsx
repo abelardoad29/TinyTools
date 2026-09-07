@@ -8,7 +8,8 @@ export function PrivacyPage() {
         <h1>What TinyTools does with your data</h1>
         <p>
           Short version: your files and text are processed by your own browser and never sent
-          anywhere. Page views are counted. Nothing else is collected.
+          anywhere. Page views are counted, and the ads that fund the free tools do track you the
+          way web ads do — both are spelled out below.
         </p>
       </header>
 
@@ -29,16 +30,29 @@ export function PrivacyPage() {
       </section>
 
       <section className="prose-block">
-        <h2>What is measured</h2>
+        <h2>What is measured, and what tracks you</h2>
         <p>
-          TinyTools uses Vercel Web Analytics to count page views. It records which pages are
-          visited and roughly where visitors come from. It does not use cookies, does not follow you
-          across other websites, and has no access to anything you type into a tool or any file you
-          open.
+          Two third-party scripts run on this site, and they are very different from each other.
         </p>
         <p>
-          It is still a third-party service, so it is named here rather than buried. If you block
-          analytics scripts, every tool keeps working exactly the same.
+          <strong>Vercel Web Analytics</strong> counts page views — which pages get visited and
+          roughly where visitors come from. It sets no cookies and does not follow you to other
+          websites.
+        </p>
+        <p>
+          <strong>Google AdSense</strong> serves the ads that pay for keeping the free tools free.
+          It does use cookies, and it does build a profile of your browsing across other sites to
+          choose which ads to show you. That is how advertising on the web works, and saying
+          otherwise here would be dishonest. You can control what Google does with that profile at{" "}
+          <a href="https://myadcenter.google.com" target="_blank" rel="noreferrer">
+            My Ad Center
+          </a>
+          , and an ad blocker prevents it entirely.
+        </p>
+        <p>
+          Neither script can see the files you open or the text you type into a tool — that
+          processing never reaches the network at all. Blocking both leaves every tool working
+          exactly the same. If you buy Pro, ads are switched off for you.
         </p>
       </section>
 
@@ -69,7 +83,6 @@ export function PrivacyPage() {
           <li>The contents of any file you open</li>
           <li>Anything you type or paste into a tool</li>
           <li>Accounts, email addresses or passwords — there is no sign-up</li>
-          <li>Advertising or cross-site tracking identifiers</li>
         </ul>
       </section>
 
