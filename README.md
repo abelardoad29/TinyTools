@@ -114,3 +114,6 @@ Set `GUMROAD_PRODUCT_ID` as an environment variable in the Vercel project settin
 Note: Vercel's free Hobby plan is intended for non-commercial projects per its terms — worth knowing since this project sells things, though plenty of small side projects run there anyway; upgrade to Pro (or move to a host like Cloudflare Pages, whose free tier explicitly allows commercial use) if that ever becomes a concern.
 
 The Tauri desktop build (`pnpm tauri:build`) doesn't need any of this and never shows ads. Its Pro activation flow calls the deployed web app's endpoint over the internet instead of a relative path — set `VITE_VERIFY_ENDPOINT` (see `.env.example`) to the live URL before building for desktop, once one exists. Desktop distribution itself is deferred to Fase D (`HERRAMIENTAS_PENDIENTES.md`).
+
+
+a
